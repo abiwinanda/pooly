@@ -9,7 +9,7 @@ defmodule Pooly.Supervisor do
     children = [
       %{
         id: Pooly.Server,
-        start: {Pooly.Server, [self(), pool_config]},
+        start: {Pooly.Server, :start_link, [self(), pool_config]},
         type: :worker
       }
     ]

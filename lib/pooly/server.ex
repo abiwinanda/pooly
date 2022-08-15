@@ -91,10 +91,10 @@ defmodule Pooly.Server do
   # Private Functions #
   #####################
 
-  defp supervisor_spec({m, f, a}) do
+  defp supervisor_spec(mfa) do
     %{
-      id: m,
-      start: {m, f, a},
+      id: Pooly.WorkerSupervisor,
+      start: {Pooly.WorkerSupervisor, :start_link, [mfa]},
       restart: :temporary,
       type: :supervisor
     }
